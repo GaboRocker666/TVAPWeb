@@ -63,6 +63,7 @@ public class ProductosControlador extends GenericForwardComposer<Component>{
 	}
 	
 	public void onUpload$buttonSeleccionar(UploadEvent event){
+		//SubirImgen
 		Image image = new Image();
 		FileOutputStream fos=null;
 		try {
@@ -105,6 +106,7 @@ public class ProductosControlador extends GenericForwardComposer<Component>{
 				}
 
 	public void onCreate$winNuevoProducto(){
+		//Cargarimagen
 		saveimg="";
 		DBProductos dbp=new DBProductos();
 		pathservidor=System.getProperty("user.dir")+"\\imagenes\\";
