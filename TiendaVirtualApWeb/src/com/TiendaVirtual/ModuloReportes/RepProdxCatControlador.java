@@ -6,8 +6,10 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Hashtable;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
@@ -18,6 +20,8 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Window;
+
+
 
 
 
@@ -207,8 +211,13 @@ public class RepProdxCatControlador extends GenericForwardComposer<Component>{
 
 	            e.printStackTrace();
 	        }
-		  
-		  try {
+		
+		Hashtable h = new Hashtable();
+		h.put("File",nombrepdf);	
+		Executions.getCurrent().createComponents("Modulo_Reportes/Pdf_Viewer.zul", win_reportescategorias,h);
+		File filepdf=new File(nombrepdf);
+		filepdf.delete();
+		/*  try {
 				if ((new File(nombrepdf)).exists()) {
 					Process p = Runtime
 					   .getRuntime()
@@ -221,7 +230,7 @@ public class RepProdxCatControlador extends GenericForwardComposer<Component>{
 				alert("Done!");
 		  	  } catch (Exception ex) {
 				ex.printStackTrace();
-			  }
+			  }*/
 	}
 	
 	public void onClick$buttonDeshacer(){

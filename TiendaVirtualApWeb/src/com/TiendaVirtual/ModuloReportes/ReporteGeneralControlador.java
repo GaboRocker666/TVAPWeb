@@ -3,8 +3,10 @@ package com.TiendaVirtual.ModuloReportes;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Hashtable;
 
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
@@ -15,6 +17,7 @@ import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listheader;
 import org.zkoss.zul.Window;
+
 
 
 
@@ -191,8 +194,13 @@ public class ReporteGeneralControlador extends GenericForwardComposer<Component>
 
 	            e.printStackTrace();
 	        }
+		Hashtable h = new Hashtable();
+		h.put("File",nombrepdf);	
+		Executions.getCurrent().createComponents("Modulo_Reportes/Pdf_Viewer.zul", win_reportespedidos,h);
+		File filepdf=new File(nombrepdf);
+		filepdf.delete();
 		  
-		  try {
+		/*  try {
 				if ((new File(nombrepdf)).exists()) {
 					Process p = Runtime
 					   .getRuntime()
@@ -205,7 +213,7 @@ public class ReporteGeneralControlador extends GenericForwardComposer<Component>
 				alert("Done!");
 		  	  } catch (Exception ex) {
 				ex.printStackTrace();
-			  }
+			  }*/
 	}
 	
 	public void onClick$buttonDeshacer(){
